@@ -1,0 +1,33 @@
+media:
+  input: media
+  output: /cusp-of-cancer/media
+
+content:
+  - name: posts
+    label: Posts
+    type: file
+    path: content/posts.json
+    format: json
+    list: true
+    fields:
+      - name: type
+        label: Post type
+        type: select
+        options:
+          values:
+            - photo
+            - gif
+            - text
+
+      - name: image
+        label: Photo or GIF
+        type: image
+
+      - name: caption
+        label: Caption
+        type: text
+
+      - name: date
+        label: Date
+        type: date
+    
