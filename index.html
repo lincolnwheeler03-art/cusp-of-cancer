@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>cusp of cancer</title>
+
+<meta name="description" content="A personal collection of photographs, thoughts and current obsessions.">
+
+<style>
+
+:root {
+
+  --paper: #f8f7f4;
+
+  --ink: #252421;
+
+  --muted: #85817a;
+
+  --line: #dedbd5;
+
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+
+  margin: 0;
+
+  background: var(--paper);
+
+  color: var(--ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 13px;
+
+}
+
+a { color: inherit; text-decoration: none; }
+
+header {
+
+  padding: 25px 5%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  border-bottom: 1px solid var(--line);
+
+}
+
+.logo {
+
+  font-family: Georgia, serif;
+
+  font-size: 23px;
+
+  letter-spacing: -1px;
+
+}
+
+nav { display: flex; gap: 24px; font-size: 11px; }
+
+nav a:hover { color: var(--muted); }
+
+.intro {
+
+  padding: 65px 5% 55px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: end;
+
+}
+
+.intro h1 {
+
+  font-family: Georgia, serif;
+
+  font-weight: normal;
+
+  font-size: clamp(34px, 5vw, 58px);
+
+  letter-spacing: -2px;
+
+  margin: 0;
+
+}
+
+.intro p {
+
+  color: var(--muted);
+
+  max-width: 230px;
+
+  line-height: 1.7;
+
+  margin: 0;
+
+  font-size: 11px;
+
+}
+
+.section-label {
+
+  padding: 0 5% 18px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+}
+
+.feed {
+
+  padding: 0 5% 90px;
+
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+
+  gap: 58px 22px;
+
+  align-items: start;
+
+}
+
+.post { min-width: 0; margin: 0; }
+
+.post img {
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  background: #e8e5df;
+
+}
+
+.post figcaption {
+
+  padding-top: 11px;
+
+  line-height: 1.6;
+
+  font-size: 11px;
+
+  color: #66625c;
+
+}
+
+.post figcaption span {
+
+  color: var(--muted);
+
+  display: block;
+
+  font-size: 9px;
+
+  margin-top: 4px;
+
+  letter-spacing: .5px;
+
+}
+
+.post-one { grid-column: 1 / 8; }
+
+.post-two { grid-column: 9 / 13; margin-top: 100px; }
+
+.post-three { grid-column: 2 / 7; }
+
+.post-four { grid-column: 8 / 13; margin-top: 120px; }
+
+.post-five { grid-column: 4 / 10; }
+
+.text-post {
+
+  grid-column: 2 / 6;
+
+  padding: 35px 0;
+
+  margin-top: 30px;
+
+  font-family: Georgia, serif;
+
+  font-size: 25px;
+
+  line-height: 1.4;
+
+  border-top: 1px solid var(--line);
+
+  border-bottom: 1px solid var(--line);
+
+}
+
+.text-post small {
+
+  display: block;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+
+  color: var(--muted);
+
+  margin-top: 18px;
+
+  letter-spacing: 1px;
+
+}
+
+.obsessions {
+
+  border-top: 1px solid var(--line);
+
+  padding: 65px 5% 85px;
+
+}
+
+.obsessions h2 {
+
+  font-family: Georgia, serif;
+
+  font-weight: normal;
+
+  font-size: 36px;
+
+  letter-spacing: -1px;
+
+  margin: 0 0 35px;
+
+}
+
+.obsession-list { max-width: 650px; }
+
+.obsession-row {
+
+  display: grid;
+
+  grid-template-columns: 120px 1fr;
+
+  gap: 20px;
+
+  padding: 16px 0;
+
+  border-top: 1px solid var(--line);
+
+  line-height: 1.6;
+
+}
+
+.obsession-row span:first-child {
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+}
+
+footer {
+
+  border-top: 1px solid var(--line);
+
+  padding: 25px 5%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+}
+
+@media (max-width: 650px) {
+
+  header { padding: 22px 18px; }
+
+  .logo { font-size: 20px; }
+
+  nav { gap: 13px; font-size: 10px; }
+
+  .intro { padding: 45px 18px 35px; display: block; }
+
+  .intro h1 { font-size: 39px; margin-bottom: 13px; }
+
+  .intro p { max-width: 260px; }
+
+  .section-label { padding: 0 18px 14px; }
+
+  .feed {
+
+    padding: 0 18px 65px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 38px;
+
+  }
+
+  .post { width: 100%; margin: 0; }
+
+  .post img { width: 100%; height: auto; }
+
+  .text-post { padding: 25px 0; margin: 0; font-size: 23px; }
+
+  .obsessions { padding: 45px 18px 60px; }
+
+  .obsessions h2 { font-size: 31px; }
+
+  .obsession-row { grid-template-columns: 95px 1fr; gap: 12px; }
+
+  footer { padding: 22px 18px; }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <a class="logo" href="#home">cusp of cancer</a>
+
+  <nav>
+
+    <a href="#home">home</a>
+
+    <a href="#obsessions">obsessions</a>
+
+    <a href="#about">about</a>
+
+  </nav>
+
+</header>
+
+<main id="home">
+
+  <section class="intro">
+
+    <h1>cusp of cancer</h1>
+
+    <p>A personal collection of things seen, things loved, and things in between.</p>
+
+  </section>
+
+  <div class="section-label">A running collection / 001—</div>
+
+  <section class="feed">
+
+    <article class="post post-one">
+
+      <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=1200&auto=format&fit=crop&q=85" alt="Fashion editorial">
+
+      <figcaption>A few things I've been thinking about lately.<span>01 / PHOTOGRAPHS</span></figcaption>
+
+    </article>
+
+    <article class="post post-two">
+
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&auto=format&fit=crop&q=85" alt="Clothing details">
+
+      <figcaption>Objects of affection.<span>02 / DETAILS</span></figcaption>
+
+    </article>
+
+    <article class="post post-three">
+
+      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1000&auto=format&fit=crop&q=85" alt="Fashion street style">
+
+      <figcaption>Somewhere between getting dressed and getting lost.<span>03 / OBSERVATIONS</span></figcaption>
+
+    </article>
+
+    <article class="post post-four">
+
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&auto=format&fit=crop&q=85" alt="Fashion portrait">
+
+      <figcaption>An image worth keeping.<span>04 / REFERENCES</span></figcaption>
+
+    </article>
+
+    <article class="text-post">
+
+      I think I'd rather collect moments than explain them.
+
+      <small>05 / LITTLE THOUGHTS</small>
+
+    </article>
+
+    <article class="post post-five">
+
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&auto=format&fit=crop&q=85" alt="Fashion portrait">
+
+      <figcaption>More things to come.<span>06 / NOTES</span></figcaption>
+
+    </article>
+
+  </section>
+
+  <section class="obsessions" id="obsessions">
+
+    <h2>Current obsessions</h2>
+
+    <div class="obsession-list">
+
+      <div class="obsession-row">
+
+        <span>Listening to</span>
+
+        <span>To be updated...</span>
+
+      </div>
+
+      <div class="obsession-row">
+
+        <span>Looking at</span>
+
+        <span>To be updated...</span>
+
+      </div>
+
+      <div class="obsession-row">
+
+        <span>Watching</span>
+
+        <span>To be updated...</span>
+
+      </div>
+
+      <div class="obsession-row">
+
+        <span>Reading</span>
+
+        <span>To be updated...</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer id="about">
+
+  <span>cusp of cancer © 2026</span>
+
+  <span>a little corner of the internet.</span>
+
+</footer>
+
+</body>
+
+</html>
