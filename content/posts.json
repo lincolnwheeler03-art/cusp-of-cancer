@@ -2,34 +2,34 @@
   {
     "type": "gif",
     "image": "/cusp-of-cancer/media/image.gif",
-    "caption": "test",
+    "caption": "test 2",
     "date": "2026-11-09"
   },
   {
     "type": "text",
-    "caption": "test",
+    "caption": "test 3",
     "date": "2026-11-09"
   },
   {
     "type": "photo",
     "image": "/cusp-of-cancer/media/IMG_6331.jpg",
-    "caption": "test\n",
+    "caption": "test 1\n",
     "date": "2026-11-09"
   },
   {
     "type": "text",
-    "caption": "test date formatting",
+    "caption": "test date formatting test 4",
     "date": "2026-11-05"
   },
   {
     "type": "text",
-    "caption": "test 3",
+    "caption": "test 5",
     "date": "2026-11-07"
   },
   {
     "type": "photo",
     "image": "/cusp-of-cancer/media/IMG_6332.webp",
-    "caption": "test 4",
+    "caption": "test 6",
     "date": "2026-11-09"
   }
 ]
