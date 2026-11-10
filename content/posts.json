@@ -9,5 +9,11 @@
     "type": "text",
     "caption": "test",
     "date": "2026-11-09"
+  },
+  {
+    "type": "gif",
+    "image": "/cusp-of-cancer/media/image.gif",
+    "caption": "test",
+    "date": "2026-11-09"
   }
 ]
