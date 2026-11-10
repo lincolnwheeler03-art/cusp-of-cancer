@@ -20,5 +20,10 @@
     "type": "text",
     "caption": "test date formatting",
     "date": "2026-11-05"
+  },
+  {
+    "type": "text",
+    "caption": "test 3",
+    "date": "2026-11-07"
   }
 ]
