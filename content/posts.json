@@ -25,5 +25,11 @@
     "type": "text",
     "caption": "test 3",
     "date": "2026-11-07"
+  },
+  {
+    "type": "photo",
+    "image": "/cusp-of-cancer/media/IMG_6332.webp",
+    "caption": "test 4",
+    "date": "2026-11-09"
   }
 ]
