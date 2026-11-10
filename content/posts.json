@@ -1,8 +1,8 @@
 [
   {
-    "type": "photo",
-    "image": "/cusp-of-cancer/media/IMG_6331.jpg",
-    "caption": "test\n",
+    "type": "gif",
+    "image": "/cusp-of-cancer/media/image.gif",
+    "caption": "test",
     "date": "2026-11-09"
   },
   {
@@ -11,9 +11,9 @@
     "date": "2026-11-09"
   },
   {
-    "type": "gif",
-    "image": "/cusp-of-cancer/media/image.gif",
-    "caption": "test",
+    "type": "photo",
+    "image": "/cusp-of-cancer/media/IMG_6331.jpg",
+    "caption": "test\n",
     "date": "2026-11-09"
   }
 ]
