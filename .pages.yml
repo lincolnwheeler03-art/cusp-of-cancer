@@ -98,3 +98,31 @@ content:
       - name: alt
         label: Shared image description
         type: string
+
+  - name: obsessions
+    label: Current Obsessions
+    type: file
+    path: content/obsessions.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: category
+        label: Category
+        type: string
+
+      - name: image
+        label: Image
+        type: image
+
+      - name: description
+        label: Note
+        type: text
+
+      - name: date
+        label: Date added
+        type: date
