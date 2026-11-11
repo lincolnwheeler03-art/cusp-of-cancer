@@ -3,43 +3,47 @@
     "type": "gif",
     "image": "/cusp-of-cancer/media/image.gif",
     "caption": "test 2",
+    "article": false,
     "date": "2026-11-01"
   },
   {
     "type": "text",
     "caption": "test 3",
+    "article": false,
     "date": "2026-11-02"
   },
   {
     "type": "photo",
     "image": "/cusp-of-cancer/media/IMG_6331.jpg",
     "caption": "test 1\n",
+    "article": false,
     "date": "2026-11-03"
   },
   {
     "type": "text",
     "caption": "test date formatting test 4",
+    "article": false,
     "date": "2026-11-05"
   },
   {
     "type": "text",
     "caption": "test 5",
+    "article": false,
     "date": "2026-11-07"
   },
   {
     "type": "photo",
     "image": "/cusp-of-cancer/media/IMG_6332.webp",
     "caption": "test 6",
+    "article": false,
     "date": "2026-11-09"
-  }
-    ,
+  },
   {
     "type": "text",
     "article": true,
     "slug": "test=article",
     "title": "Test article",
     "excerpt": "Test long article",
-    "date": "2026-11-10",
     "content": [
       {
         "type": "paragraph",
@@ -49,6 +53,13 @@
         "type": "paragraph",
         "text": "Ut qui deleniti et deleniti repellendus velit et dolor qui velit fugiat. Et qui harum possimus omnis nihil est cupiditate autem lorem sed. Illum ea atque et dolore dolor placeat ea voluptas nulla."
       }
-    ]
+    ],
+    "date": "2026-11-10"
+  },
+  {
+    "type": "photo",
+    "image": "/cusp-of-cancer/media/IMG_1360.jpeg",
+    "article": false,
+    "date": "2026-11-11"
   }
 ]
