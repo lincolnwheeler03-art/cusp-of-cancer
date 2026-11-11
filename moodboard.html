@@ -64,8 +64,22 @@ async function loadMoodboard() {
     const response = await fetch('./content/moodboard.json');
     if (!response.ok) throw new Error('Mood Board images not found');
 
-    const images = await response.json();
-    const items = Array.isArray(images) ? images.filter(item => item && item.image) : [];
+    const records = await response.json();
+    const items = Array.isArray(records)
+      ? records.flatMap(record => {
+          if (!record) return [];
+          const sources = Array.isArray(record.images)
+            ? record.images
+            : record.image ? [record.image] : [];
+
+          return sources.map(source => {
+            const src = typeof source === 'string'
+              ? source
+              : source && (source.src || source.path) || '';
+            return src ? { src, alt: record.alt || '' } : null;
+          }).filter(Boolean);
+        })
+      : [];
 
     gallery.innerHTML = '';
 
@@ -80,16 +94,10 @@ async function loadMoodboard() {
 
       const image = document.createElement('img');
       image.className = 'moodboard-image';
-      image.src = item.image;
-      image.alt = item.alt || item.caption || 'Mood board image';
+      image.src = item.src;
+      image.alt = item.alt || item.src.split('/').pop().replace(/[-_]/g, ' ').replace(/\\.[^.]+$/, '') || 'Mood board image';
       image.loading = 'lazy';
       figure.appendChild(image);
-
-      if (item.caption) {
-        const caption = document.createElement('figcaption');
-        caption.textContent = item.caption;
-        figure.appendChild(caption);
-      }
 
       gallery.appendChild(figure);
     });
