@@ -17,16 +17,17 @@ nav a:hover { color: var(--muted); }
 main { min-height: 65vh; padding: 65px 5% 90px; }
 h1 { margin: 0 0 12px; font: normal clamp(38px, 5vw, 58px) Georgia, serif; letter-spacing: -2px; }
 .intro { margin: 0 0 35px; color: var(--muted); font-size: 11px; line-height: 1.7; }
-.board-embed { min-height: 360px; display: flex; justify-content: center; overflow-x: auto; padding: 10px 0; }
-.board-embed a { display: block; margin: 0 auto; }
-.board-link { display: inline-block; margin-top: 20px; color: var(--muted); font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+.moodboard-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.moodboard-image { display: block; width: 100%; height: auto; }
+.gallery-placeholder { grid-column: 1 / -1; min-height: 280px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--muted); font-size: 11px; text-align: center; padding: 24px; }
 footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; }
 @media (max-width: 650px) {
  header { padding: 22px 18px; align-items: flex-start; gap: 15px; }
  .logo { font-size: 20px; }
  nav { gap: 12px; flex-wrap: wrap; justify-content: flex-end; font-size: 10px; }
  main { padding: 45px 18px 65px; }
- .board-embed { min-height: 280px; }
+ .moodboard-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+ .gallery-placeholder { min-height: 220px; }
  footer { padding: 22px 18px; }
 }
 </style>
@@ -44,23 +45,14 @@ footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; jus
 </header>
 <main>
   <h1>Mood Board</h1>
-  <p class="intro">A collection of images and ideas saved to Pinterest.</p>
-  <section class="board-embed" aria-label="Pinterest mood board">
-    <a data-pin-do="embedBoard"
-       data-pin-board-width="900"
-       data-pin-scale-height="240"
-       data-pin-scale-width="80"
-       href="https://www.pinterest.com/lincolnwheeler_/mood-board/">
-    </a>
+  <p class="intro">A collection of images and ideas.</p>
+  <section class="moodboard-grid" aria-label="Mood board images">
+    <div class="gallery-placeholder">Images will be placed here individually.</div>
   </section>
-  <a class="board-link" href="https://www.pinterest.com/lincolnwheeler_/mood-board/" target="_blank" rel="noopener noreferrer">
-    View the board on Pinterest
-  </a>
 </main>
 <footer>
   <span>cusp of cancer © 2026</span>
   <span>a little corner of the internet.</span>
 </footer>
-<script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
 </body>
 </html>
