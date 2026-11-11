@@ -36,18 +36,18 @@
   {
     "type": "text",
     "article": true,
-    "slug": "a-note-on-personal-style",
-    "title": "A Note on Personal Style",
-    "excerpt": "A little test of what longer writing on Cusp of Cancer might look like.",
+    "slug": "test=article",
+    "title": "Test article",
+    "excerpt": "Test long article",
     "date": "2026-11-10",
     "content": [
       {
         "type": "paragraph",
-        "text": "Personal style is less about constantly finding something new and more about learning what feels like you. The pieces we return to, the combinations we repeat, and the things we wear until they become part of our daily lives."
+        "text": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Occaecat vero molestias placeat do ut soluta consectetur est. Omnis qui atque sunt lorem sunt libero quas similique."
       },
       {
         "type": "paragraph",
-        "text": "This is a second paragraph. Eventually, this space can hold longer essays, observations, travel writing, photographs, and commissioned stories."
+        "text": "Ut qui deleniti et deleniti repellendus velit et dolor qui velit fugiat. Et qui harum possimus omnis nihil est cupiditate autem lorem sed. Illum ea atque et dolore dolor placeat ea voluptas nulla."
       }
     ]
   }
