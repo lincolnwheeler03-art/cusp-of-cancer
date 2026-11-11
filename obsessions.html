@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>obsessions — cusp of cancer</title>
+<title>current obsessions — cusp of cancer</title>
 <meta name="description" content="A collection of current obsessions.">
 <style>
 :root { --paper: #f8f7f4; --ink: #252421; --muted: #85817a; --line: #dedbd5; }
@@ -14,23 +14,32 @@ header { padding: 25px 5%; display: flex; justify-content: space-between; align-
 .logo { font: 23px Georgia, serif; letter-spacing: -1px; }
 nav { display: flex; gap: 24px; font-size: 11px; }
 nav a:hover { color: var(--muted); }
-.intro { padding: 65px 5% 45px; }
-h1 { margin: 0 0 12px; font: normal clamp(38px, 5vw, 58px) Georgia, serif; letter-spacing: -2px; }
-.intro p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
-.obsessions { min-height: 180px; padding: 0 5% 90px; }
-.test-label { display: inline-block; border: 1px solid var(--line); padding: 12px 16px; color: var(--muted); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+.intro { padding: 65px 5% 42px; }
+h1 { margin: 0; font: normal clamp(38px, 5vw, 58px) Georgia, serif; letter-spacing: -2px; }
+.obsession-grid { padding: 0 5% 90px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 20px; align-items: start; }
+.obsession-card { min-width: 0; }
+.obsession-image { display: block; width: 100%; height: auto; background: #e8e5df; }
+.obsession-category { margin: 15px 0 7px; color: var(--muted); font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; }
+.obsession-card h2 { margin: 0 0 8px; font: normal 22px/1.25 Georgia, serif; }
+.obsession-note { margin: 0; color: #66625c; font-size: 11px; line-height: 1.7; white-space: pre-line; }
+.obsession-date { display: block; margin-top: 12px; color: var(--muted); font-size: 9px; letter-spacing: .5px; text-transform: uppercase; }
+.empty-message { grid-column: 1 / -1; padding: 20px 0; color: var(--muted); font-size: 11px; }
 .about-footer { border-top: 1px solid var(--line); padding: 55px 5%; display: flex; align-items: center; gap: 28px; }
 .portrait-placeholder { width: 100px; height: 120px; flex: 0 0 auto; background: #e8e5df; display: grid; place-items: center; color: var(--muted); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
 .about-copy { max-width: 360px; }
 .about-copy h2 { margin: 0 0 10px; font: normal 21px Georgia, serif; }
 .about-copy p { margin: 0; color: #66625c; font-size: 11px; line-height: 1.8; }
 footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; }
+@media (max-width: 900px) {
+  .obsession-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 650px) {
   header { padding: 22px 18px; align-items: flex-start; gap: 15px; }
   .logo { font-size: 20px; }
   nav { gap: 12px; flex-wrap: wrap; justify-content: flex-end; font-size: 10px; }
-  .intro { padding: 45px 18px 35px; }
-  .obsessions { padding: 0 18px 65px; }
+  .intro { padding: 45px 18px 30px; }
+  .obsession-grid { grid-template-columns: 1fr; gap: 35px; padding: 0 18px 65px; }
+  .obsession-card h2 { font-size: 21px; }
   .about-footer { padding: 42px 18px; gap: 18px; }
   .portrait-placeholder { width: 82px; height: 102px; }
   footer { padding: 22px 18px; }
@@ -45,16 +54,15 @@ footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; jus
     <a href="archive.html">archive</a>
     <a href="blog.html">blog</a>
     <a href="obsessions.html" aria-current="page">obsessions</a>
-      <a href="moodboard.html">mood board</a>
+    <a href="moodboard.html">mood board</a>
   </nav>
 </header>
 <main>
   <section class="intro">
-    <h1>Obsessions</h1>
-    <p>Lorem ipsum dolor sit amet.</p>
+    <h1>Current Obsessions</h1>
   </section>
-  <section class="obsessions" aria-label="Obsessions">
-    <span class="test-label">Test label</span>
+  <section class="obsession-grid" id="obsessions-grid" aria-label="Current obsessions">
+    <p class="empty-message">Nothing here yet.</p>
   </section>
   <section class="about-footer">
     <div class="portrait-placeholder" role="img" aria-label="Headshot placeholder">Headshot</div>
@@ -68,5 +76,83 @@ footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; jus
   <span>cusp of cancer © 2026</span>
   <span>a little corner of the internet.</span>
 </footer>
+<script>
+function formatDate(value) {
+  if (!value) return '';
+  const date = new Date(value + 'T12:00:00');
+  return Number.isNaN(date.getTime())
+    ? ''
+    : date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+async function loadObsessions() {
+  const container = document.getElementById('obsessions-grid');
+
+  try {
+    const response = await fetch('./content/obsessions.json');
+    if (!response.ok) throw new Error('Obsession entries not found');
+
+    const entries = await response.json();
+    const items = Array.isArray(entries) ? entries.filter(item => item && (item.title || item.image || item.description)) : [];
+
+    container.innerHTML = '';
+
+    if (items.length === 0) {
+      container.innerHTML = '<p class="empty-message">Nothing here yet.</p>';
+      return;
+    }
+
+    items.forEach(item => {
+      const card = document.createElement('article');
+      card.className = 'obsession-card';
+
+      if (item.image) {
+        const image = document.createElement('img');
+        image.className = 'obsession-image';
+        image.src = item.image;
+        image.alt = item.imageAlt || item.title || 'Current obsession';
+        image.loading = 'lazy';
+        card.appendChild(image);
+      }
+
+      if (item.category) {
+        const category = document.createElement('p');
+        category.className = 'obsession-category';
+        category.textContent = item.category;
+        card.appendChild(category);
+      }
+
+      if (item.title) {
+        const title = document.createElement('h2');
+        title.textContent = item.title;
+        card.appendChild(title);
+      }
+
+      if (item.description) {
+        const note = document.createElement('p');
+        note.className = 'obsession-note';
+        note.textContent = item.description;
+        card.appendChild(note);
+      }
+
+      const dateLabel = formatDate(item.date);
+      if (dateLabel) {
+        const date = document.createElement('time');
+        date.className = 'obsession-date';
+        date.dateTime = item.date;
+        date.textContent = dateLabel;
+        card.appendChild(date);
+      }
+
+      container.appendChild(card);
+    });
+  } catch (error) {
+    console.error('Could not load obsessions:', error);
+    container.innerHTML = '<p class="empty-message">Nothing here yet.</p>';
+  }
+}
+
+loadObsessions();
+</script>
 </body>
 </html>
