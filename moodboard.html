@@ -95,7 +95,7 @@ async function loadMoodboard() {
       const image = document.createElement('img');
       image.className = 'moodboard-image';
       image.src = item.src;
-      image.alt = item.alt || item.src.split('/').pop().replace(/[-_]/g, ' ').replace(/\\.[^.]+$/, '') || 'Mood board image';
+      image.alt = item.alt || item.src.split('/').pop().replace(/[-_]/g, ' ').replace(/\.[^.]+$/, '') || 'Mood board image';
       image.loading = 'lazy';
       figure.appendChild(image);
 
