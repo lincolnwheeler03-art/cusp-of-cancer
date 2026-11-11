@@ -18,7 +18,8 @@ nav a:hover { color: var(--muted); }
 h1 { margin: 0; font: normal clamp(38px, 5vw, 58px) Georgia, serif; letter-spacing: -2px; }
 .obsession-grid { padding: 0 5% 90px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 20px; align-items: start; }
 .obsession-card { min-width: 0; }
-.obsession-image { display: block; width: 100%; height: auto; background: #e8e5df; }
+.obsession-image,
+.obsession-video { display: block; width: 100%; height: auto; background: #e8e5df; }
 .obsession-category { margin: 15px 0 7px; color: var(--muted); font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; }
 .obsession-card h2 { margin: 0 0 8px; font: normal 22px/1.25 Georgia, serif; }
 .obsession-note { margin: 0; color: #66625c; font-size: 11px; line-height: 1.7; white-space: pre-line; }
@@ -125,6 +126,17 @@ async function loadObsessions() {
         image.alt = item.imageAlt || item.title || 'Current obsession';
         image.loading = 'lazy';
         card.appendChild(image);
+      }
+
+      if (item.video) {
+        const video = document.createElement('video');
+        video.className = 'obsession-video';
+        video.src = item.video;
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.setAttribute('aria-label', item.title || 'Current obsession video');
+        card.appendChild(video);
       }
 
       if (item.category) {
