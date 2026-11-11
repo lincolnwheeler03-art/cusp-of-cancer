@@ -15,18 +15,12 @@ content:
         type: select
         required: true
         options:
-          values:
-            - photo
-            - gif
-            - video
-            - text
-
+          values: [photo, gif, video, text]
       - name: image
         label: Photo or GIF
         type: image
         options:
           extensions: [jpg, jpeg, png, webp, gif]
-
       - name: video
         label: Video file (MP4 or WebM)
         type: file
@@ -34,33 +28,26 @@ content:
         options:
           categories: [video]
           extensions: [mp4, webm]
-
       - name: poster
         label: Video poster image
         type: image
         options:
           extensions: [jpg, jpeg, png, webp, gif]
-
       - name: caption
         label: Caption or short text
         type: text
-
       - name: article
         label: Long article
         type: boolean
-
       - name: slug
         label: Article URL slug
         type: string
-
       - name: title
         label: Article title
         type: string
-
       - name: excerpt
         label: Article excerpt
         type: text
-
       - name: content
         label: Article content blocks
         type: object
@@ -71,21 +58,15 @@ content:
             type: select
             required: true
             options:
-              values:
-                - paragraph
-                - image
-                - video
-
+              values: [paragraph, image, video]
           - name: text
             label: Paragraph text
             type: text
-
           - name: src
             label: Article image
             type: image
             options:
               extensions: [jpg, jpeg, png, webp, gif]
-
           - name: video
             label: Video file (MP4 or WebM)
             type: file
@@ -93,15 +74,12 @@ content:
             options:
               categories: [video]
               extensions: [mp4, webm]
-
           - name: alt
             label: Image description
             type: string
-
           - name: caption
             label: Image caption
             type: string
-
       - name: date
         label: Post date
         type: date
@@ -122,7 +100,6 @@ content:
           multiple:
             max: 100
           extensions: [jpg, jpeg, png, webp, gif]
-
       - name: alt
         label: Shared image description
         type: string
@@ -137,42 +114,41 @@ content:
       - name: title
         label: Title
         type: string
-        required: true
-
+        description: Optional for a text-only note; add a title or a note so the entry has something to display.
       - name: category
         label: Category
-        type: string
-
+        type: select
+        required: true
+        options:
+          values: [Fashion, Film, Music, Books, Random]
       - name: image
-        label: Image or GIF
+        label: Image or GIF (optional)
         type: image
         options:
           extensions: [jpg, jpeg, png, webp, gif]
-
       - name: imageAlt
         label: Image description
         type: string
-
       - name: video
-        label: Video file (MP4 or WebM)
+        label: Upload video file (MP4 or WebM)
         type: file
-        description: Keep each clip under 50 MiB. GitHub blocks individual files larger than 100 MiB.
+        description: Optional. Keep each clip under 50 MiB. GitHub blocks individual files larger than 100 MiB.
         options:
           categories: [video]
           extensions: [mp4, webm]
-
+      - name: youtube
+        label: YouTube video URL (optional)
+        type: string
+        description: Paste a regular YouTube watch, youtu.be, or embed URL.
       - name: description
-        label: Note
+        label: Note or text (optional)
         type: text
-
       - name: link
         label: Link URL
         type: string
-
       - name: linkLabel
         label: Link label (e.g. Watch, Read, Listen)
         type: string
-
       - name: date
         label: Date added
         type: date
