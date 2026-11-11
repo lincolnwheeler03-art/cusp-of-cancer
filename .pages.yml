@@ -13,6 +13,7 @@ content:
       - name: type
         label: Post type
         type: select
+        required: true
         options:
           values:
             - photo
@@ -24,11 +25,11 @@ content:
         type: image
 
       - name: caption
-        label: Caption or short post
+        label: Caption or short text
         type: text
 
       - name: article
-        label: Long post
+        label: Long article
         type: boolean
 
       - name: slug
@@ -45,11 +46,13 @@ content:
 
       - name: content
         label: Article content blocks
-        type: list
+        type: object
+        list: true
         fields:
           - name: type
             label: Block type
             type: select
+            required: true
             options:
               values:
                 - paragraph
@@ -60,7 +63,7 @@ content:
             type: text
 
           - name: src
-            label: Image
+            label: Article image
             type: image
 
           - name: alt
@@ -72,5 +75,26 @@ content:
             type: string
 
       - name: date
-        label: Date
+        label: Post date
         type: date
+        required: true
+
+  - name: moodboard
+    label: Mood Board images
+    type: file
+    path: content/moodboard.json
+    format: json
+    list: true
+    fields:
+      - name: image
+        label: Image
+        type: image
+        required: true
+
+      - name: alt
+        label: Image description
+        type: string
+
+      - name: caption
+        label: Caption
+        type: string
