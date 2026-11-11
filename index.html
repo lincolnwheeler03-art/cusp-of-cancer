@@ -1,150 +1,62 @@
 
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>cusp of cancer</title>
-
 <meta name="description" content="A personal collection of photographs, thoughts and current obsessions.">
 
 <style>
-
 :root {
-
   --paper: #f8f7f4;
-
   --ink: #252421;
-
   --muted: #85817a;
-
   --line: #dedbd5;
-
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-
 body {
-
   margin: 0;
-
   background: var(--paper);
-
   color: var(--ink);
-
   font-family: Arial, Helvetica, sans-serif;
-
   font-size: 13px;
-
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 header {
-
   padding: 25px 5%;
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   border-bottom: 1px solid var(--line);
-
 }
 
 .logo {
-
   font-family: Georgia, serif;
-
   font-size: 23px;
-
   letter-spacing: -1px;
-
 }
 
-nav { display: flex; gap: 24px; font-size: 11px; }
+nav {
+  display: flex;
+  gap: 24px;
+  font-size: 11px;
+}
 
 nav a:hover { color: var(--muted); }
 
-.intro {
-
-  padding: 65px 5% 55px;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: end;
-
-}
-
-.intro h1 {
-
-  font-family: Georgia, serif;
-
-  font-weight: normal;
-
-  font-size: clamp(34px, 5vw, 58px);
-
-  letter-spacing: -2px;
-
-  margin: 0;
-
-}
-
-.intro p {
-
-  color: var(--muted);
-
-  max-width: 230px;
-
-  line-height: 1.7;
-
-  margin: 0;
-
-  font-size: 11px;
-
-}
-
-.section-label {
-
-  padding: 0 5% 18px;
-
-  color: var(--muted);
-
-  font-size: 10px;
-
-  letter-spacing: 1.5px;
-
-  text-transform: uppercase;
-
-}
-
-
 .feed {
-  padding: 0 5% 90px;
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-auto-rows: 8px;
-  grid-auto-flow: row;
-  column-gap: 22px;
-  row-gap: 38px;
-  align-items: start;
-}
-
-/* Let individual posts participate in the feed grid */
-.feed > #posts-container {
-  display: contents;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 45px 22px;
+  padding: 35px 5% 90px;
 }
 
 .post {
@@ -167,38 +79,11 @@ nav a:hover { color: var(--muted); }
 }
 
 .post figcaption span {
-  color: var(--muted);
   display: block;
+  color: var(--muted);
   font-size: 9px;
   margin-top: 4px;
   letter-spacing: .5px;
-}
-
-/* Different widths create the editorial collage */
-.post.layout-1 { grid-column: span 5; }
-.post.layout-2 { grid-column: span 4; }
-.post.layout-3 { grid-column: span 5; }
-.post.layout-4 { grid-column: span 4; }
-.post.layout-5 { grid-column: span 6; }
-
-.text-post {
-  grid-column: span 5;
-  min-width: 0;
-  padding: 28px;
-  margin: 0;
-  font-family: Georgia, serif;
-  font-size: 25px;
-  line-height: 1.4;
-  border: 1px solid var(--line);
-}
-
-.text-post span {
-  display: block;
-  font-family: Arial, sans-serif;
-  font-size: 9px;
-  color: var(--muted);
-  margin-top: 18px;
-  letter-spacing: 1px;
 }
 
 .empty-message {
@@ -207,315 +92,81 @@ nav a:hover { color: var(--muted); }
   padding: 30px 0;
 }
 
-
-.post { min-width: 0; margin: 0; }
-
-.post img {
-
-  display: block;
-
-  width: 100%;
-
-  height: auto;
-
-  background: #e8e5df;
-
-}
-
-.post figcaption {
-
-  padding-top: 11px;
-
-  line-height: 1.6;
-
-  font-size: 11px;
-
-  color: #66625c;
-
-}
-
-.post figcaption span {
-
-  color: var(--muted);
-
-  display: block;
-
-  font-size: 9px;
-
-  margin-top: 4px;
-
-  letter-spacing: .5px;
-
-}
-
-.post-one { grid-column: 1 / 8; }
-
-.post-two { grid-column: 9 / 13; margin-top: 100px; }
-
-.post-three { grid-column: 2 / 7; }
-
-.post-four { grid-column: 8 / 13; margin-top: 120px; }
-
-.post-five { grid-column: 4 / 10; }
-
-.text-post {
-
-  grid-column: 2 / 6;
-
-  padding: 35px 0;
-
-  margin-top: 30px;
-
-  font-family: Georgia, serif;
-
-  font-size: 25px;
-
-  line-height: 1.4;
-
-  border-top: 1px solid var(--line);
-
-  border-bottom: 1px solid var(--line);
-
-}
-
-.text-post small {
-
-  display: block;
-
-  font-family: Arial, sans-serif;
-
-  font-size: 9px;
-
-  color: var(--muted);
-
-  margin-top: 18px;
-
-  letter-spacing: 1px;
-
-}
-
-.obsessions {
-
-  border-top: 1px solid var(--line);
-
-  padding: 65px 5% 85px;
-
-}
-
-.obsessions h2 {
-
-  font-family: Georgia, serif;
-
-  font-weight: normal;
-
-  font-size: 36px;
-
-  letter-spacing: -1px;
-
-  margin: 0 0 35px;
-
-}
-
-.obsession-list { max-width: 650px; }
-
-.obsession-row {
-
-  display: grid;
-
-  grid-template-columns: 120px 1fr;
-
-  gap: 20px;
-
-  padding: 16px 0;
-
-  border-top: 1px solid var(--line);
-
-  line-height: 1.6;
-
-}
-
-.obsession-row span:first-child {
-
-  color: var(--muted);
-
-  font-size: 10px;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-
-}
-
 footer {
-
   border-top: 1px solid var(--line);
-
   padding: 25px 5%;
-
   display: flex;
-
   justify-content: space-between;
-
   color: var(--muted);
-
   font-size: 10px;
-
 }
 
 @media (max-width: 650px) {
-
-  header { padding: 22px 18px; }
+  header {
+    padding: 22px 18px;
+    align-items: flex-start;
+    gap: 15px;
+  }
 
   .logo { font-size: 20px; }
 
-  nav { gap: 13px; font-size: 10px; }
+  nav {
+    gap: 12px;
+    font-size: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 
-  .intro { padding: 45px 18px 35px; display: block; }
+  .feed {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 0 0 65px;
+  }
 
-  .intro h1 { font-size: 39px; margin-bottom: 13px; }
+  .post {
+    width: 100%;
+  }
 
-  .intro p { max-width: 260px; }
+  .post img {
+    width: 100%;
+    height: auto;
+  }
 
-  .section-label { padding: 0 18px 14px; }
+  .post figcaption {
+    padding: 11px 18px 0;
+  }
 
- 
-.feed {
-  padding: 0 0 65px;
-  display: flex;
-  flex-direction: column;
-  gap: 38px;
+  footer {
+    padding: 22px 18px;
+  }
 }
-
-.feed > #posts-container {
-  display: contents;
-}
-
-.post {
-  width: 100%;
-  margin: 0;
-}
-
-.post img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.post figcaption {
-  padding: 11px 18px 0;
-}
-
-.text-post {
-  width: calc(100% - 36px);
-  margin: 0 18px;
-  padding: 24px 18px;
-  font-size: 23px;
-  border: 1px solid var(--line);
-}
-
-
-  .post { width: 100%; margin: 0; }
-
-  .post img { width: 100%; height: auto; }
-
-  .text-post { padding: 25px 0; margin: 0; font-size: 23px; }
-
-  .obsessions { padding: 45px 18px 60px; }
-
-  .obsessions h2 { font-size: 31px; }
-
-  .obsession-row { grid-template-columns: 95px 1fr; gap: 12px; }
-
-  footer { padding: 22px 18px; }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <header>
-
-  <a class="logo" href="#home">cusp of cancer</a>
+  <a class="logo" href="index.html">cusp of cancer</a>
 
   <nav>
-  <a href="index.html">home</a>
-  <a href="#obsessions">obsessions</a>
-  <a href="archive.html">archive</a>
-  <a href="about.html">about</a>
-</nav>
-
+    <a href="index.html">home</a>
+    <a href="archive.html">archive</a>
+    <a href="blog.html">blog</a>
+    <a href="obsessions.html">obsessions</a>
+    <a href="moodboard.html">mood board</a>
+  </nav>
 </header>
 
-<main id="home">
-
-  <section class="intro">
-
-    <h1>cusp of cancer</h1>
-
-    <p>A personal collection of things seen, things loved, and things in between.</p>
-
-  </section>
-
-  <div class="section-label">A running collection / 001—</div>
-
-  <section class="feed">
-<div id="posts-container"></div>
-  </section>
-
-  <section class="obsessions" id="obsessions">
-
-    <h2>Current obsessions</h2>
-
-    <div class="obsession-list">
-
-      <div class="obsession-row">
-
-        <span>Listening to</span>
-
-        <span>To be updated...</span>
-
-      </div>
-
-      <div class="obsession-row">
-
-        <span>Looking at</span>
-
-        <span>To be updated...</span>
-
-      </div>
-
-      <div class="obsession-row">
-
-        <span>Watching</span>
-
-        <span>To be updated...</span>
-
-      </div>
-
-      <div class="obsession-row">
-
-        <span>Reading</span>
-
-        <span>To be updated...</span>
-
-      </div>
-
-    </div>
-
-  </section>
-
+<main>
+  <section class="feed" id="posts-container"></section>
 </main>
 
-<footer id="about">
-
+<footer>
   <span>cusp of cancer © 2026</span>
-
   <span>a little corner of the internet.</span>
-
 </footer>
+
 <script>
 async function loadPosts() {
   const container = document.getElementById('posts-container');
@@ -526,24 +177,27 @@ async function loadPosts() {
 
     const posts = await response.json();
 
-    posts.forEach((post, index) => {
-      if (post.type === 'text') {
-        const article = document.createElement('article');
-        article.className = 'text-post';
-        article.textContent = post.caption || '';
-        container.appendChild(article);
-        return;
-      }
+    const visualPosts = posts
+      .filter(post =>
+        (post.type === 'photo' || post.type === 'gif') && post.image
+      )
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 15);
 
-      if (!post.image) return;
+    if (visualPosts.length === 0) {
+      container.innerHTML =
+        '<p class="empty-message">New photographs coming soon.</p>';
+      return;
+    }
 
-      const article = document.createElement('article');
-      const layouts = ['post-one', 'post-two', 'post-three', 'post-four', 'post-five'];
-      article.className = 'post ' + layouts[index % layouts.length];
+    visualPosts.forEach(post => {
+      const article = document.createElement('figure');
+      article.className = 'post';
 
       const img = document.createElement('img');
       img.src = post.image;
       img.alt = post.caption || 'Cusp of Cancer photograph';
+      img.loading = 'lazy';
 
       const caption = document.createElement('figcaption');
       caption.textContent = post.caption || '';
@@ -561,11 +215,13 @@ async function loadPosts() {
 
   } catch (error) {
     console.error('Could not load posts:', error);
+    container.innerHTML =
+      '<p class="empty-message">Unable to load posts.</p>';
   }
 }
 
 loadPosts();
 </script>
-</body>
 
+</body>
 </html>
