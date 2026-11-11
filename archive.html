@@ -77,6 +77,9 @@ nav a:hover { color: var(--muted); }
 }
 
 .feed {
+  #posts-container {
+  display: contents;
+}
   padding: 0 5% 100px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -163,11 +166,32 @@ footer {
   .section-label { padding: 0 18px 14px; }
 
   .feed {
-    padding: 0 18px 65px;
-    display: flex;
-    flex-direction: column;
-    gap: 38px;
-  }
+  padding: 0 0 65px;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+.post {
+  width: 100%;
+  margin: 0;
+}
+
+.post img {
+  width: 100%;
+  height: auto;
+}
+
+.post figcaption {
+  padding: 11px 18px 0;
+}
+
+.text-post {
+  width: 100%;
+  padding: 25px 18px;
+  margin: 0;
+  font-size: 23px;
+}
 
   .post { width: 100%; margin: 0 !important; }
   .text-post { width: 100%; padding: 25px 0; margin: 0; font-size: 23px; }
