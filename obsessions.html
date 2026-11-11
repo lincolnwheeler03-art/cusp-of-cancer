@@ -18,8 +18,8 @@ nav a:hover { color: var(--muted); }
 h1 { margin: 0; font: normal clamp(38px, 5vw, 58px) Georgia, serif; letter-spacing: -2px; }
 .obsession-grid { padding: 0 5% 90px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 20px; align-items: start; }
 .obsession-card { min-width: 0; }
-.obsession-image,
-.obsession-video { display: block; width: 100%; height: auto; background: #e8e5df; }
+.obsession-image, .obsession-video { display: block; width: 100%; height: auto; background: #e8e5df; }
+.youtube-frame { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #e8e5df; }
 .obsession-category { margin: 15px 0 7px; color: var(--muted); font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; }
 .obsession-card h2 { margin: 0 0 8px; font: normal 22px/1.25 Georgia, serif; }
 .obsession-note { margin: 0; color: #66625c; font-size: 11px; line-height: 1.7; white-space: pre-line; }
@@ -33,9 +33,7 @@ h1 { margin: 0; font: normal clamp(38px, 5vw, 58px) Georgia, serif; letter-spaci
 .about-copy h2 { margin: 0 0 10px; font: normal 21px Georgia, serif; }
 .about-copy p { margin: 0; color: #66625c; font-size: 11px; line-height: 1.8; }
 footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; }
-@media (max-width: 900px) {
-  .obsession-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
+@media (max-width: 900px) { .obsession-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 650px) {
   header { padding: 22px 18px; align-items: flex-start; gap: 15px; }
   .logo { font-size: 20px; }
@@ -61,9 +59,7 @@ footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; jus
   </nav>
 </header>
 <main>
-  <section class="intro">
-    <h1>Current Obsessions</h1>
-  </section>
+  <section class="intro"><h1>Current Obsessions</h1></section>
   <section class="obsession-grid" id="obsessions-grid" aria-label="Current obsessions">
     <p class="empty-message">Nothing here yet.</p>
   </section>
@@ -80,11 +76,30 @@ footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; jus
   <span>a little corner of the internet.</span>
 </footer>
 <script>
+const obsessionCategories = ['Fashion', 'Film', 'Music', 'Books', 'Random'];
+
 function safeExternalUrl(value) {
   if (!value) return '';
   try {
     const url = new URL(value, window.location.href);
     return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : '';
+  } catch {
+    return '';
+  }
+}
+
+function youtubeEmbedUrl(value) {
+  if (!value) return '';
+  try {
+    const url = new URL(value);
+    let id = '';
+    if (url.hostname === 'youtu.be' || url.hostname === 'www.youtu.be') {
+      id = url.pathname.split('/').filter(Boolean)[0] || '';
+    } else if (['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtube-nocookie.com', 'www.youtube-nocookie.com'].includes(url.hostname)) {
+      if (url.pathname === '/watch') id = url.searchParams.get('v') || '';
+      else if (/^\/(embed|shorts)\//.test(url.pathname)) id = url.pathname.split('/')[2] || '';
+    }
+    return /^[A-Za-z0-9_-]{11}$/.test(id) ? 'https://www.youtube-nocookie.com/embed/' + id : '';
   } catch {
     return '';
   }
@@ -100,14 +115,11 @@ function formatDate(value) {
 
 async function loadObsessions() {
   const container = document.getElementById('obsessions-grid');
-
   try {
     const response = await fetch('./content/obsessions.json');
     if (!response.ok) throw new Error('Obsession entries not found');
-
     const entries = await response.json();
-    const items = Array.isArray(entries) ? entries.filter(item => item && (item.title || item.image || item.description)) : [];
-
+    const items = Array.isArray(entries) ? entries.filter(item => item && (item.title || item.image || item.video || item.youtube || item.description)) : [];
     container.innerHTML = '';
 
     if (items.length === 0) {
@@ -128,6 +140,19 @@ async function loadObsessions() {
         card.appendChild(image);
       }
 
+      const embedUrl = youtubeEmbedUrl(item.youtube);
+      if (embedUrl) {
+        const frame = document.createElement('iframe');
+        frame.className = 'youtube-frame';
+        frame.src = embedUrl;
+        frame.title = item.title ? 'YouTube video: ' + item.title : 'YouTube video';
+        frame.loading = 'lazy';
+        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        frame.allowFullscreen = true;
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        card.appendChild(frame);
+      }
+
       if (item.video) {
         const video = document.createElement('video');
         video.className = 'obsession-video';
@@ -139,10 +164,11 @@ async function loadObsessions() {
         card.appendChild(video);
       }
 
-      if (item.category) {
+      const categoryValue = obsessionCategories.includes(item.category) ? item.category : '';
+      if (categoryValue) {
         const category = document.createElement('p');
         category.className = 'obsession-category';
-        category.textContent = item.category;
+        category.textContent = categoryValue;
         card.appendChild(category);
       }
 
@@ -178,7 +204,6 @@ async function loadObsessions() {
         date.textContent = dateLabel;
         card.appendChild(date);
       }
-
       container.appendChild(card);
     });
   } catch (error) {
@@ -186,7 +211,6 @@ async function loadObsessions() {
     container.innerHTML = '<p class="empty-message">Nothing here yet.</p>';
   }
 }
-
 loadObsessions();
 </script>
 </body>
