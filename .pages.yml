@@ -127,6 +127,14 @@ content:
         label: Note
         type: text
 
+      - name: link
+        label: Link URL
+        type: string
+
+      - name: linkLabel
+        label: Link label (e.g. Watch, Read, Listen)
+        type: string
+
       - name: date
         label: Date added
         type: date
