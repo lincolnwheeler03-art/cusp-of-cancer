@@ -86,15 +86,15 @@ content:
     format: json
     list: true
     fields:
-      - name: image
-        label: Image
+      - name: images
+        label: Images (select multiple)
         type: image
         required: true
+        options:
+          multiple:
+            max: 100
+          extensions: [jpg, jpeg, png, webp, gif]
 
       - name: alt
-        label: Image description
-        type: string
-
-      - name: caption
-        label: Caption
+        label: Shared image description
         type: string
