@@ -177,11 +177,16 @@ footer {
 
   .section-label { padding: 0 18px 14px; }
 
-  .feed {
+ 
+.feed {
   padding: 0 0 65px;
   display: flex;
   flex-direction: column;
   gap: 38px;
+}
+
+.feed > #posts-container {
+  display: contents;
 }
 
 .post {
@@ -190,6 +195,7 @@ footer {
 }
 
 .post img {
+  display: block;
   width: 100%;
   height: auto;
 }
@@ -199,10 +205,11 @@ footer {
 }
 
 .text-post {
-  width: 100%;
-  padding: 25px 18px;
-  margin: 0;
+  width: calc(100% - 36px);
+  margin: 0 18px;
+  padding: 24px 18px;
   font-size: 23px;
+  border: 1px solid var(--line);
 }
 
   .post { width: 100%; margin: 0 !important; }
