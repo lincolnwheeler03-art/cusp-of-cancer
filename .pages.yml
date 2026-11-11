@@ -23,6 +23,8 @@ content:
       - name: image
         label: Photo or GIF
         type: image
+        options:
+          extensions: [jpg, jpeg, png, webp, gif]
 
       - name: caption
         label: Caption or short text
@@ -65,6 +67,8 @@ content:
           - name: src
             label: Article image
             type: image
+            options:
+              extensions: [jpg, jpeg, png, webp, gif]
 
           - name: alt
             label: Image description
@@ -116,8 +120,10 @@ content:
         type: string
 
       - name: image
-        label: Image
+        label: Image or GIF
         type: image
+        options:
+          extensions: [jpg, jpeg, png, webp, gif]
 
       - name: imageAlt
         label: Image description
