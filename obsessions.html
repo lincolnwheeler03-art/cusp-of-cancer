@@ -23,6 +23,8 @@ h1 { margin: 0; font: normal clamp(38px, 5vw, 58px) Georgia, serif; letter-spaci
 .obsession-card h2 { margin: 0 0 8px; font: normal 22px/1.25 Georgia, serif; }
 .obsession-note { margin: 0; color: #66625c; font-size: 11px; line-height: 1.7; white-space: pre-line; }
 .obsession-date { display: block; margin-top: 12px; color: var(--muted); font-size: 9px; letter-spacing: .5px; text-transform: uppercase; }
+.obsession-link { display: inline-block; margin-top: 15px; padding-bottom: 4px; border-bottom: 1px solid var(--ink); font-size: 10px; letter-spacing: .7px; text-transform: uppercase; }
+.obsession-link:hover { color: var(--muted); border-color: var(--muted); }
 .empty-message { grid-column: 1 / -1; padding: 20px 0; color: var(--muted); font-size: 11px; }
 .about-footer { border-top: 1px solid var(--line); padding: 55px 5%; display: flex; align-items: center; gap: 28px; }
 .portrait-placeholder { width: 100px; height: 120px; flex: 0 0 auto; background: #e8e5df; display: grid; place-items: center; color: var(--muted); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
@@ -77,6 +79,16 @@ footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; jus
   <span>a little corner of the internet.</span>
 </footer>
 <script>
+function safeExternalUrl(value) {
+  if (!value) return '';
+  try {
+    const url = new URL(value, window.location.href);
+    return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : '';
+  } catch {
+    return '';
+  }
+}
+
 function formatDate(value) {
   if (!value) return '';
   const date = new Date(value + 'T12:00:00');
@@ -133,6 +145,17 @@ async function loadObsessions() {
         note.className = 'obsession-note';
         note.textContent = item.description;
         card.appendChild(note);
+      }
+
+      const linkUrl = safeExternalUrl(item.link);
+      if (linkUrl) {
+        const link = document.createElement('a');
+        link.className = 'obsession-link';
+        link.href = linkUrl;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = item.linkLabel || 'Explore';
+        card.appendChild(link);
       }
 
       const dateLabel = formatDate(item.date);
