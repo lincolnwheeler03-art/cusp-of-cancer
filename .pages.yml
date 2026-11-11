@@ -119,6 +119,10 @@ content:
         label: Image
         type: image
 
+      - name: imageAlt
+        label: Image description
+        type: string
+
       - name: description
         label: Note
         type: text
