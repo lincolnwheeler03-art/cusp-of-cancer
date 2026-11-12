@@ -264,22 +264,13 @@ footer {
   </section>
 
   <section class="blog-feed" id="blog-container">
-    <p class="empty-message">Loading entries...</p>
   </section>
 
-  <section class="about-footer">
-    <div class="portrait-placeholder" role="img" aria-label="Headshot placeholder">Headshot</div>
-
-    <div class="about-copy">
-      <h2>A little about me</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </section>
+  
 </main>
 
 <footer>
   <span>cusp of cancer © 2026</span>
-  <span>Lorem ipsum dolor sit amet.</span>
 </footer>
 
 <script>
@@ -307,8 +298,7 @@ async function loadBlog() {
     container.innerHTML = '';
 
     if (entries.length === 0) {
-      container.innerHTML =
-        '<p class="empty-message">The first entry is yet to come.</p>';
+      container.innerHTML = '';
       return;
     }
 
