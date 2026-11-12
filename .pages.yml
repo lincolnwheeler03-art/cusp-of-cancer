@@ -48,9 +48,19 @@ content:
       - name: excerpt
         label: Article excerpt
         type: text
+        description: A short preview shown on the Blog page.
+      - name: body
+        label: Article body
+        type: rich-text
+        description: Write the full article here. Use the formatting toolbar to add headings, emphasis, links, lists, and images.
+        options:
+          format: html
+          path: media
+          switcher: true
       - name: content
-        label: Article content blocks
+        label: Legacy article content blocks
         type: object
+        hidden: true
         list: true
         fields:
           - name: type
