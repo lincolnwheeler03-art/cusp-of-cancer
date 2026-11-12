@@ -260,13 +260,11 @@ footer {
   <div class="section-label">All photographs &amp; moving images</div>
 
   <section class="archive-grid" id="posts-container">
-    <p class="empty-message">Loading collection...</p>
   </section>
 </main>
 
 <footer>
   <span>cusp of cancer © 2026</span>
-  <span>Lorem ipsum dolor sit amet.</span>
 </footer>
 
 
@@ -319,8 +317,7 @@ async function loadPosts() {
     container.innerHTML = '';
 
     if (visualPosts.length === 0) {
-      container.innerHTML =
-        '<p class="empty-message">The collection is waiting to begin.</p>';
+      container.innerHTML = '';
       return;
     }
 
