@@ -61,7 +61,7 @@ async function loadMoodboard() {
   const gallery = document.getElementById('moodboard-grid');
 
   try {
-    const response = await fetch('./content/moodboard.json');
+    const response = await fetch('./content/moodboard.json?updated=' + Date.now());
     if (!response.ok) throw new Error('Mood Board images not found');
 
     const records = await response.json();
