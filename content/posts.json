@@ -41,7 +41,7 @@
   {
     "type": "text",
     "article": true,
-    "slug": "test=article",
+    "slug": "test-article",
     "title": "Test article",
     "excerpt": "Test long article",
     "content": [
