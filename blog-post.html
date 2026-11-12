@@ -170,6 +170,14 @@ footer {
 <script>
 const articleContainer = document.getElementById("article");
 
+function createSlug(value) {
+  return String(value || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 function formatDate(dateString) {
   const date = new Date(dateString + "T12:00:00");
   return date.toLocaleDateString("en-US", {
@@ -208,7 +216,7 @@ async function loadArticle() {
     const post = posts.find(item =>
       item.type === "text" &&
       item.article === true &&
-      item.slug === slug
+      (item.slug || createSlug(item.title)) === slug
     );
 
     if (!post) {
