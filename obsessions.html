@@ -61,19 +61,11 @@ footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; jus
 <main>
   <section class="intro"><h1>Current Obsessions</h1></section>
   <section class="obsession-grid" id="obsessions-grid" aria-label="Current obsessions">
-    <p class="empty-message">Nothing here yet.</p>
   </section>
-  <section class="about-footer">
-    <div class="portrait-placeholder" role="img" aria-label="Headshot placeholder">Headshot</div>
-    <div class="about-copy">
-      <h2>A little about me</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </section>
+  
 </main>
 <footer>
   <span>cusp of cancer © 2026</span>
-  <span>Lorem ipsum dolor sit amet.</span>
 </footer>
 <script>
 const obsessionCategories = ['Fashion', 'Film', 'Music', 'Books', 'Random'];
@@ -123,7 +115,7 @@ async function loadObsessions() {
     container.innerHTML = '';
 
     if (items.length === 0) {
-      container.innerHTML = '<p class="empty-message">Nothing here yet.</p>';
+      container.innerHTML = '';
       return;
     }
 
@@ -208,7 +200,7 @@ async function loadObsessions() {
     });
   } catch (error) {
     console.error('Could not load obsessions:', error);
-    container.innerHTML = '<p class="empty-message">Nothing here yet.</p>';
+    container.innerHTML = '';
   }
 }
 loadObsessions();
