@@ -130,7 +130,7 @@ content:
         type: select
         required: true
         options:
-          values: [Fashion, Film, Music, Books, Random]
+          values: [Music, Fashion, Film, Literature, Cuisine, Miscellaneous]
       - name: image
         label: Image or GIF (optional)
         type: image
