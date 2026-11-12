@@ -168,7 +168,6 @@ footer {
 
 <footer>
   <span>cusp of cancer © 2026</span>
-  <span>Lorem ipsum dolor sit amet.</span>
 </footer>
 
 
@@ -193,8 +192,7 @@ async function loadPosts() {
       .slice(0, 14);
 
     if (visualPosts.length === 0) {
-      container.innerHTML =
-        '<p class="empty-message">New photographs coming soon.</p>';
+      container.innerHTML = '';
       return;
     }
 
