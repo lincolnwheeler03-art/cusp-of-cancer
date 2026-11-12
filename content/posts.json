@@ -65,7 +65,7 @@
   {
     "type": "text",
     "caption": "Test title?",
-    "article": false,
+    "article": true,
     "title": "Test 2",
     "excerpt": "Test. ",
     "content": [
