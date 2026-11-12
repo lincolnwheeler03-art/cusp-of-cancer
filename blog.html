@@ -283,6 +283,14 @@ footer {
 </footer>
 
 <script>
+function createSlug(value) {
+  return String(value || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 async function loadBlog() {
   const container = document.getElementById('blog-container');
 
@@ -345,7 +353,7 @@ async function loadBlog() {
       if (isLongArticle && post.slug) {
         const link = document.createElement('a');
         link.className = 'read-more';
-        link.href = 'blog-post.html?slug=' + encodeURIComponent(post.slug);
+        link.href = 'blog-post.html?slug=' + encodeURIComponent(post.slug || createSlug(post.title));
         link.textContent = 'Read more';
         article.appendChild(link);
       }
