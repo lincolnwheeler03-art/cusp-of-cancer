@@ -114,6 +114,26 @@ content:
         label: Shared image description
         type: string
 
+  - name: moodboard_archive
+    label: Mood Board Archive
+    type: file
+    path: content/moodboard-archive.json
+    format: json
+    list: true
+    fields:
+      - name: image
+        label: Image
+        type: image
+        required: true
+        options:
+          extensions: [jpg, jpeg, png, webp, gif]
+      - name: alt
+        label: Image description
+        type: string
+      - name: date
+        label: Date added
+        type: date
+
   - name: obsessions
     label: Current Obsessions
     type: file
