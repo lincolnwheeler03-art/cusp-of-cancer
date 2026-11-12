@@ -2,7 +2,7 @@
   {
     "type": "gif",
     "image": "/cusp-of-cancer/media/image.gif",
-    "caption": "test 2",
+    "caption": "test 3",
     "article": false,
     "date": "2026-11-01"
   },
@@ -33,7 +33,7 @@
   },
   {
     "type": "photo",
-    "image": "/cusp-of-cancer/media/IMG_6332.webp",
+    "image": "/cusp-of-cancer/media/tmax 400 xtol bxspd k1000  (4)_48Bit_g2p0003.jpeg",
     "caption": "test 6",
     "article": false,
     "date": "2026-11-09"
@@ -59,6 +59,43 @@
   {
     "type": "photo",
     "image": "/cusp-of-cancer/media/IMG_1360.jpeg",
+    "article": false,
+    "date": "2026-11-11"
+  },
+  {
+    "type": "text",
+    "caption": "Test title?",
+    "article": false,
+    "title": "Test 2",
+    "excerpt": "Test. ",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Culpa expedita est assumenda est non harum mollitia ut similique. Occaecat iusto atque qui irure dignissimos nulla culpa cupidatat id est esse id."
+      },
+      {
+        "type": "paragraph",
+        "text": "Qui laborum quo voluptas nulla quidem laborum. Officia voluptas sint commodo voluptas at mollit ad tempor dolores. Fuga quod praesentium aliquip quo fugiat labore deserunt fuga sunt veniam."
+      },
+      {
+        "type": "paragraph",
+        "text": "Velit magna voluptatum enim cupidatat in dolore. Duis temporibus ex enim veniam et optio cumque excepteur est labore. Sint voluptatum praesentium accusamus iusto est sint occaecat cupidatat. Id deserunt magna dignissimos quo irure facere voluptatum temporibus ducimus et. Soluta lorem excepteur reprehenderit rerum non qui quo culpa."
+      },
+      {
+        "type": "image",
+        "src": "/cusp-of-cancer/media/IMG_7159.jpeg",
+        "alt": "Britney"
+      },
+      {
+        "type": "paragraph",
+        "text": "Animi autem harum assumenda dolor id voluptas maxime eiusmod. Qui culpa elit proident sint ullamco sunt. Assumenda et iusto ex quidem aliquip in fugiat commodo eligendi voluptas atque. Pariatur temporibus et velit imperdiet dolorem nihil omnis incididunt. Nostrud ut facere distinctio culpa et repellendus facilis culpa adipiscing.\n"
+      }
+    ],
+    "date": "2026-11-11"
+  },
+  {
+    "type": "photo",
+    "image": "/cusp-of-cancer/media/IMG_0748.jpeg",
     "article": false,
     "date": "2026-11-11"
   }
