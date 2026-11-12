@@ -186,7 +186,7 @@ async function loadPosts() {
         (post.type === 'video' && post.video)
       )
       .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .slice(0, 15);
+      .slice(0, 14);
 
     if (visualPosts.length === 0) {
       container.innerHTML =
