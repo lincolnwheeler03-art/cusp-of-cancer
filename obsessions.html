@@ -108,7 +108,7 @@ function formatDate(value) {
 async function loadObsessions() {
   const container = document.getElementById('obsessions-grid');
   try {
-    const response = await fetch('./content/obsessions.json');
+    const response = await fetch('./content/obsessions.json?updated=' + Date.now());
     if (!response.ok) throw new Error('Obsession entries not found');
     const entries = await response.json();
     const items = Array.isArray(entries) ? entries.filter(item => item && (item.title || item.image || item.video || item.youtube || item.description)) : [];
