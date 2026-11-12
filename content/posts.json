@@ -64,7 +64,6 @@
   },
   {
     "type": "text",
-    "caption": "Test title?",
     "article": true,
     "title": "Test 2",
     "excerpt": "Test. ",
