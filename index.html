@@ -178,7 +178,7 @@ async function loadPosts() {
   const container = document.getElementById('posts-container');
 
   try {
-    const response = await fetch('./content/posts.json');
+    const response = await fetch('./content/posts.json?updated=' + Date.now());
     if (!response.ok) throw new Error('Posts not found');
 
     const posts = await response.json();
