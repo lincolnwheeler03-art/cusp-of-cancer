@@ -49,12 +49,10 @@ footer { border-top: 1px solid var(--line); padding: 25px 5%; display: flex; jus
   <h1>Mood Board</h1>
   <p class="intro">A collection of images and ideas.</p>
   <section class="moodboard-grid" id="moodboard-grid" aria-label="Mood board images">
-    <p class="gallery-empty">The mood board is ready for images.</p>
   </section>
 </main>
 <footer>
   <span>cusp of cancer © 2026</span>
-  <span>Lorem ipsum dolor sit amet.</span>
 </footer>
 <script>
 async function loadMoodboard() {
@@ -84,7 +82,7 @@ async function loadMoodboard() {
     gallery.innerHTML = '';
 
     if (items.length === 0) {
-      gallery.innerHTML = '<p class="gallery-empty">The mood board is ready for images.</p>';
+      gallery.innerHTML = '';
       return;
     }
 
@@ -112,7 +110,7 @@ async function loadMoodboard() {
     }
   } catch (error) {
     console.error('Could not load Mood Board images:', error);
-    gallery.innerHTML = '<p class="gallery-empty">The mood board is ready for images.</p>';
+    gallery.innerHTML = '';
   }
 }
 
