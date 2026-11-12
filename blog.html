@@ -310,6 +310,7 @@ async function loadBlog() {
 
       const isLongArticle =
         post.article === true ||
+        (typeof post.body === 'string' && post.body.trim().length > 0) ||
         (Array.isArray(post.content) && post.content.length > 0) ||
         (Array.isArray(post.images) && post.images.length > 0);
 
