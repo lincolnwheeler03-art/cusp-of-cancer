@@ -280,16 +280,40 @@ async function loadPosts() {
   const container = document.getElementById('posts-container');
 
   try {
-    const response = await fetch('./content/posts.json');
-    if (!response.ok) throw new Error('Posts not found');
+    const [postsResponse, archiveResponse] = await Promise.all([
+      fetch('./content/posts.json?updated=' + Date.now()),
+      fetch('https://raw.githubusercontent.com/lincolnwheeler03-art/cusp-of-cancer/main/content/moodboard-archive.json?updated=' + Date.now()).catch(() => null)
+    ]);
+    if (!postsResponse.ok) throw new Error('Posts not found');
 
-    const posts = await response.json();
+    const posts = await postsResponse.json();
+    let moodboardArchive = [];
+    if (archiveResponse && archiveResponse.ok) {
+      const archiveData = await archiveResponse.json();
+      if (Array.isArray(archiveData)) moodboardArchive = archiveData;
+    }
 
-    const visualPosts = posts
+    const postImages = posts
       .filter(post =>
         ((post.type === 'photo' || post.type === 'gif') && post.image) ||
         (post.type === 'video' && post.video)
       )
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const seenImages = new Set(postImages.map(post => post.image).filter(Boolean));
+    const moodboardImages = [];
+    moodboardArchive.forEach(item => {
+      if (!item || !item.image || seenImages.has(item.image)) return;
+      seenImages.add(item.image);
+      moodboardImages.push({
+        type: 'photo',
+        image: item.image,
+        caption: item.alt || '',
+        date: item.date || '1970-01-01'
+      });
+    });
+
+    const visualPosts = [...postImages, ...moodboardImages]
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     container.innerHTML = '';
